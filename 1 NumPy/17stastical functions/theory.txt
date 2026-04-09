@@ -1,0 +1,243 @@
+
+Statistical Functions in NumPy
+
+---
+
+1️⃣ What are statistical functions?
+
+They answer questions like:
+
+What is the average?
+
+How spread out is the data?
+
+Where do most values lie?
+
+
+In ML, these are used for:
+
+normalization
+
+understanding datasets
+
+detecting outliers
+
+
+
+---
+
+🧠 Core statistical functions (concept only)
+
+Function	    Meaning
+
+mean()	        Average
+median()	    Middle value
+std()	        Spread of data
+var()	        Variance (spread squared)
+percentile()	Position-based value
+
+
+
+---
+
+🟢 Example array
+
+import numpy as np
+
+data = np.array([10, 20, 30, 40, 50])
+
+
+---
+
+🔹 mean()
+
+np.mean(data)
+
+👉 Adds everything and divides by count
+(10+20+30+40+50)/5 = 30
+
+
+---
+
+🔹 median()
+
+np.median(data)
+
+👉 Middle value after sorting
+Here → 30
+You do NOT need to sort the array yourself.
+👉 np.median() automatically sorts internally.
+
+
+For 2D arrays, how is median calculated? Which middle value is taken?”
+
+This is VERY important, so read slowly.
+
+Case 1: Median WITHOUT axis
+
+arr = np.array([[1, 3],
+                [2, 4]])
+
+print(np.median(arr))
+
+What happens?
+
+NumPy:
+
+1. Flattens the array
+→ [1, 3, 2, 4]
+
+by default, np.median flattens the array in row-wise order.
+
+
+2. Sorts
+→ [1, 2, 3, 4]
+
+
+3. Takes middle
+→ (2 + 3)/2 = 2.5
+
+
+
+👉 Default behavior = flatten everything
+
+
+---
+
+Case 2: Median WITH axis = 0 (column-wise)
+
+print(np.median(arr, axis=0))
+
+How it works:
+
+Column 1 → [1, 2] → median = 1.5
+Column 2 → [3, 4] → median = 3.5
+
+Result:
+
+[1.5 3.5]
+
+
+---
+
+Case 3: Median WITH axis = 1 (row-wise)
+
+print(np.median(arr, axis=1))
+
+Row 1 → [1, 3] → median = 2
+Row 2 → [2, 4] → median = 3
+
+Result:
+
+[2. 3.]
+
+
+---
+
+🔑 Simple rule to remember:
+
+❌ No axis → whole array
+
+✅ axis=0 → columns
+
+✅ axis=1 → rows
+
+
+
+---
+
+
+If even count → average of two middle values
+
+
+---
+
+🔹 std() (standard deviation)
+
+np.std(data)
+
+Meaning:
+
+> How far values move away from the mean
+
+
+
+Small std → values are close
+
+Large std → values are spread
+
+
+
+---
+
+🔹 var() (variance)
+
+np.var(data)
+
+👉 Just std²
+Used more in math, less in practice
+
+
+---
+
+🔹 percentile()
+
+np.percentile(data, 90)
+
+👉 Value below which 90% of data lies
+
+Used for:
+
+cutoffs
+
+thresholds
+
+removing extreme outliers
+
+
+
+---
+
+🟡 Axis usage (IMPORTANT but simple)
+
+arr = np.array([[1, 2, 3],
+                [4, 5, 6]])
+
+Mean of entire array
+
+np.mean(arr)
+
+Mean column-wise
+
+np.mean(arr, axis=0)
+
+Mean row-wise
+
+np.mean(arr, axis=1)
+
+Axis rule:
+
+axis=0 → down columns
+
+axis=1 → across rows
+
+
+
+---
+
+🔴 Why this topic matters (but no real-world yet)
+
+Later you’ll see:
+
+normalization = (x − mean)/std
+
+feature scaling
+
+dataset analysis
+
+
+But for now, just understand the mechanics.
+
+
+---
+

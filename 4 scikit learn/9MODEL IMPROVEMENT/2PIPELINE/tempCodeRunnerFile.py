@@ -1,0 +1,8 @@
+print("X_train:",X_train)
+print()
+print("X_test:",X_test)
+print()
+print("y_train:",y_train)
+print()
+print("y_test:",y_test)
+print()

@@ -1,0 +1,192 @@
+The key is this:
+
+axis means the SAME thing always
+but “what happens” depends on the TYPE of operation
+(inserting vs reducing like min/max/sum)
+
+Let’s clear this once and forever.
+
+🔑 The unchanging rule (VERY IMPORTANT)
+
+axis tells NumPy which dimension is being collapsed / removed / traversed across.
+
+It does NOT mean:
+
+“work on rows”
+
+“work on columns”
+
+Those are effects, not definitions.
+
+First, fix the mental model
+
+For a 2D array:
+
+a.shape = (rows, columns)
+a.shape = (axis 0, axis 1)
+
+
+So:
+
+axis 0 → row index
+
+axis 1 → column index
+
+This NEVER changes.
+
+Now let’s analyze BOTH cases side by side
+🟦 CASE 1: np.insert (STRUCTURE-CHANGING operation)
+np.insert(var1, 2, [22,23,24], axis=0)
+
+What insert does
+
+insert ADDS data, so it must decide:
+
+“What am I inserting — a row or a column?”
+
+Rule for insert
+
+axis=0 → insert ROWS
+
+axis=1 → insert COLUMNS
+
+Why?
+
+Because:
+
+axis 0 corresponds to rows
+
+axis 1 corresponds to columns
+
+So:
+
+axis=0 → row index → add a row
+axis=1 → column index → add a column
+
+
+✔ No contradiction here.
+
+🟩 CASE 2: np.min, np.max, np.sum (REDUCTION operations)
+np.min(a, axis=1)
+
+What min does
+
+min REDUCES data.
+
+That means:
+
+One dimension will be REMOVED.
+
+🔥 THIS IS THE CORE LOGIC 🔥
+
+axis tells NumPy which dimension to REMOVE.
+
+Let’s apply this.
+
+🔹 np.min(a, axis=1)
+
+axis = 1 → column dimension
+
+NumPy collapses columns
+
+What remains? → rows
+
+So result:
+
+One value per row
+
+→ row-wise minimum
+
+That’s why:
+
+np.min(a, axis=1)
+
+
+gives:
+
+[min of row 0,
+ min of row 1,
+ min of row 2,
+ ...]
+
+🔹 np.max(a, axis=0)
+
+axis = 0 → row dimension
+
+NumPy collapses rows
+
+What remains? → columns
+
+So result:
+
+One value per column
+
+→ column-wise maximum
+
+🔁 SAME AXIS, DIFFERENT EFFECT (this is the key)
+Operation type	axis=0	axis=1
+Insert (add data)	adds ROW	adds COLUMN
+Min / Max / Sum (reduce data)	reduces ROWS → column result	reduces COLUMNS → row result
+
+👉 Axis meaning is the same
+👉 Operation effect is different
+
+Visual example (this usually makes it click)
+
+Assume:
+
+a = [[1, 2, 3],
+     [4, 5, 6]]
+
+np.min(a, axis=1)
+
+Collapse columns
+
+Each row becomes ONE number
+
+[1 2 3] → 1
+[4 5 6] → 4
+
+
+Result:
+
+[1 4]
+
+np.min(a, axis=0)
+
+Collapse rows
+
+Each column becomes ONE number
+
+[1 4] → 1
+[2 5] → 2
+[3 6] → 3
+
+
+Result:
+
+[1 2 3]
+
+🔒 One sentence that ends all confusion
+
+For reduction functions (min, max, sum):
+axis is the dimension that gets REMOVED.
+
+Why it FEELS opposite (but isn’t)
+
+Because:
+
+Insert adds along an axis
+
+Min/Max removes along an axis
+
+GOLDEN RULE (REMEMBER THIS)
+Axis number tells which dimension to REMOVE
+
+
+Axis           Removed            Result works on
+axis=0         rows               columns
+axis=1         columns            rows
+
+
+

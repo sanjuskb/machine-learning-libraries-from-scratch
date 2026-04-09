@@ -1,0 +1,356 @@
+
+First question :
+
+> “What is a pixel?”
+---
+
+🔵 STEP 1: What is a pixel? (VERY BASIC)
+
+Imagine this 🧠
+You have a drawing book.
+
+You draw a picture by making very very tiny dots.
+
+Each tiny dot:
+
+has a color
+
+occupies a small square space
+
+
+👉 That tiny dot is called a PIXEL
+
+So:
+
+Pixel = smallest unit of an image
+
+Image = collection of pixels
+
+
+
+---
+
+Example in real life
+
+Take your phone screen 📱
+If you zoom a photo a LOT, you will see:
+
+⬛⬜🟥🟦 tiny squares
+
+Each square = one pixel
+
+
+---
+
+🔵 STEP 2: How does a computer store an image?
+
+A computer cannot see pictures like humans.
+It only understands numbers.
+
+So the computer stores an image like this:
+
+[ [ 0, 255, 0 ],
+  [ 255, 0, 255 ],
+  [ 0, 255, 0 ] ]
+
+Each number = brightness or color value
+
+0   → black
+
+255 → white
+
+
+This table of numbers is called an ARRAY
+
+
+---
+
+🔵 STEP 3: What is an array? (SUPER IMPORTANT)
+
+An array is just:
+
+> “A box that stores numbers in order”
+
+
+
+Example:
+
+marks = [90, 85, 70]
+
+This is a 1D array (one line)
+
+
+---
+
+Image-like array:
+
+image = [
+  [10, 20, 30],
+  [40, 50, 60],
+  [70, 80, 90]
+]
+
+This is a 2D array (rows and columns)
+
+
+---
+
+🔵 STEP 4: Why NumPy exists (very simple reason)
+
+Python lists are slow when data is big.
+
+NumPy exists to:
+
+handle huge amount of numbers
+
+do calculations very fast
+
+work easily with arrays
+
+
+So NumPy = fast math with arrays
+
+
+---
+
+🔵 STEP 5: Forget Linear Algebra word for now
+
+❌ Don’t think “math”
+❌ Don’t think “formula”
+
+Instead think:
+
+> “Playing with number tables”
+
+
+
+That’s all NumPy linear algebra is.
+
+
+---
+
+🔵 STEP 6: Let’s understand multiplication FIRST (slowly)
+
+Normal multiplication:
+
+2 × 3 = 6
+
+Easy 👍
+
+
+---
+
+Now arrays:
+
+a = [1, 2]
+b = [3, 4]
+
+Element-wise multiplication:
+
+1×3 , 2×4
+→ [3, 8]
+
+This is normal, position-to-position multiplication.
+
+
+---
+
+🔵 STEP 7: Why matrix multiplication exists (simple reason)
+
+Sometimes we don’t want:
+
+> “multiply same positions”
+
+
+
+Instead we want:
+
+> “combine numbers in a meaningful way”
+
+
+
+Example:
+
+You get marks in 2 subjects
+
+Each subject has importance (weight)
+
+
+Marks:
+
+[ Maths, Science ] = [ 50, 40 ]
+
+Importance:
+
+[ 2, 3 ]
+
+Final score:
+
+50×2 + 40×3 = 100 + 120 = 220
+
+👉 This adding after multiplying is called dot product
+
+
+---
+
+🔵 STEP 8: Dot product in NumPy (very small example)
+
+import numpy as np
+
+marks = np.array([50, 40])
+weights = np.array([2, 3])
+
+result = marks @ weights
+print(result)
+
+Output:
+
+220
+
+That’s it.
+No magic.
+No heavy math.
+
+
+---
+
+🔵 STEP 9: Why this is important for ML (without ML details)
+
+In ML:
+
+Numbers = data
+
+Weights = importance
+
+
+Computer keeps doing:
+
+data × weight + data × weight + ...
+
+So NumPy helps do this fast.
+
+
+---
+
+---
+
+
+
+👉 What is a Matrix? (Before doing anything complex)
+
+
+
+
+---
+
+🟢 Step 1: What is a matrix in simple words?
+
+A matrix is just a table of numbers.
+
+That’s it.
+
+Just like a table in a notebook.
+
+Example:
+
+1   2   3
+4   5   6
+
+This is a matrix.
+
+Rows → horizontal lines
+
+Columns → vertical lines
+
+
+
+---
+
+🟡 Step 2: Rows & Columns (VERY IMPORTANT)
+
+Look at this:
+
+1   2   3
+4   5   6
+
+Rows = 2
+
+Columns = 3
+
+
+So we say:
+
+> This is a 2 × 3 matrix
+
+
+
+(2 rows, 3 columns)
+
+
+---
+
+🟢 Step 3: Matrix in NumPy
+
+In NumPy, a matrix is just a 2D array.
+
+import numpy as np
+
+A = np.array([
+    [1, 2, 3],
+    [4, 5, 6]
+])
+
+print(A)
+
+Output:
+
+[[1 2 3]
+ [4 5 6]]
+
+Same table, just written in code.
+
+
+---
+
+🟡 Step 4: Why do we even need matrices?
+
+Because real-world data is not single numbers.
+
+Examples:
+
+Image → table of pixels
+
+Student marks → rows & subjects
+
+AI inputs → many values at once
+
+Weights in ML → stored as tables
+
+
+So matrices help us store & process many numbers together.
+
+
+---
+
+🧠 Step 5: Very important idea (remember this)
+
+> A vector = 1D array (line of numbers)
+A matrix = 2D array (table of numbers)
+
+
+
+Examples:
+
+# Vector
+v = np.array([10, 20, 30])
+
+# Matrix
+M = np.array([
+    [1, 2],
+    [3, 4]
+])
+
+
+---
+
+

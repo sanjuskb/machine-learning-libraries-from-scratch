@@ -1,0 +1,23 @@
+| Operation           | Operator Form | NumPy Function      |
+| ------------------- | ------------- | ------------------- |
+| Addition            | a + b       | np.add(a, b)      |
+| Subtraction         | a - b       | np.subtract(a, b) |
+| Multiplication      | a * b       | np.multiply(a, b) |
+| Division            | a / b       | np.divide(a, b)   |
+| Modulus (remainder) | a % b       | np.mod(a, b)      |
+| Power (exponent)    | a ** `      | np.power(a, b)    |
+| Reciprocal          | 1 / a       | np.reciprocal(a)  |
+
+---------------------------------------------------------------------------------------------
+
+| Function       | What it does (simple explanation)               | Example meaning     |
+| -------------- | ----------------------------------------------- | ------------------- |
+| np.min(x)    | Returns the **smallest value** in the array     | Lowest number       |
+| np.max(x)    | Returns the **largest value** in the array      | Highest number      |
+| np.argmin(x) | Returns the **index of the smallest value**     | Position of minimum |
+| np.sqrt(x)   | Returns the **square root** of each element     | √x                  |
+| np.sin(x)    | Returns **sine** of each element (in radians)   | sin(x)              |
+| np.cos(x)    | Returns **cosine** of each element (in radians) | cos(x)              |
+| np.cumsum(x) | Returns the **cumulative sum** of elements      | Running total       |
+
+all these functions are called as ufuncs
